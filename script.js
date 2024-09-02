@@ -1,33 +1,16 @@
-// (function GameBoard ()
-// {
-//     let rows = 3; 
-//     let columns = 3; 
-    
-//     let board = new Array(rows);
-
-//     for(let i = 0; i < rows; i++ )
-//     {   
-//         board[i] = new Array(columns);
-//     }
-
-//     return { showGameBoard: function()
-//         {
-//             console.log(board);
-//         }
-//      };
-// })();
-
-// const varGameBoard = GameBoard();
-// varGameBoard.showGameBoard();
-
-
-// GameBoard.showGameBoard;
-
 (function Game()
 {
-    let rows = 3; 
-    let columns = 3; 
-    
+
+    let gameBoard = createGameBoard(3, 3);
+    gameBoard.ShowGameBoard();
+
+    gameBoard.StartGameFlow(gameBoard);
+
+})();
+
+
+function createGameBoard(rows, columns)
+{
     let board = new Array(rows);
 
     for(let i = 0; i < rows; i++ )
@@ -35,11 +18,19 @@
         board[i] = new Array(columns);
     }
 
-    console.log(board);
+    return { 
+        ShowGameBoard: function()
+        {
+            console.log(board);
+        },
 
-    GameFlow(board);
+        StartGameFlow: function()
+        {
+            GameFlow(board);
+        }
+    };
 
-})();
+}
 
 function GameFlow(board)
 {
