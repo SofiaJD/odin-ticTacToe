@@ -1,0 +1,88 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&family=Sriracha&display=swap');
+
+body
+{
+    background-image: url(IMG/Background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1
+{
+    font-family: 'Playwrite AR';
+    text-align: center;
+    color: black;
+}
+
+#GameBoard
+{
+    height: 400px;
+    width: 400px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    font-family: 'Sriracha';
+}
+
+#GameBoard .GameBoardCell
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    cursor: pointer;
+    border: 3px solid black;
+    color: rgb(74, 74, 74);
+}
+
+#GameBoard .GameBoardCell:hover
+{
+    background-color: rgba(128, 128, 128, 0.118) ;
+}
+
+#GameBoard .GameBoardCell.one
+{
+    border-top: none;
+    border-left: none;
+}
+
+#GameBoard .GameBoardCell.two
+{
+    border-top: none;
+}
+
+#GameBoard .GameBoardCell.three
+{
+    border-top: none;
+    border-right: none;
+}
+
+#GameBoard .GameBoardCell.four
+{
+    border-left: none;
+}
+
+#GameBoard .GameBoardCell.six
+{
+    border-right: none;
+}
+
+#GameBoard .GameBoardCell.seven
+{
+    border-bottom: none;
+    border-left: none;
+}
+
+#GameBoard .GameBoardCell.eight
+{
+    border-bottom: none;
+}
+
+#GameBoard .GameBoardCell.nine
+{
+    border-bottom: none;
+    border-right: none;
+}

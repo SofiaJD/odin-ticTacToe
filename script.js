@@ -1,11 +1,11 @@
+let gameCells = document.querySelectorAll('.GameBoardCell');
+
 (function Game()
 {
-
     let gameBoard = createGameBoard(3, 3);
     gameBoard.ShowGameBoard();
 
     gameBoard.StartGameFlow(gameBoard);
-
 })();
 
 
@@ -21,7 +21,13 @@ function createGameBoard(rows, columns)
     return { 
         ShowGameBoard: function()
         {
-            console.log(board);
+            gameCells.forEach((gameCell, index) => 
+            {
+                let row = Math.floor(index / columns);
+                let col = index % columns;
+
+                gameCell.textContent = board[row][col];
+            });
         },
 
         StartGameFlow: function()
@@ -29,50 +35,52 @@ function createGameBoard(rows, columns)
             GameFlow(board);
         }
     };
-
 }
 
-function GameFlow(board)
+
+function GameFlow(board) 
 {
-    for(let i = 1; i < 10; i++)
-    {
-        console.log(i + "° turno:");
+    let turn = 1; 
 
-        let fila = prompt("Ingrese la posicion (fila) del movimiento:");
-        console.log("La fila es: " + fila);
-    
-        let columna = prompt("Ingrese la posicion (columna) del movimiento:");
-        console.log("La columna es: " + columna);
+    gameCells.forEach((gameCell, index) => {
+        gameCell.addEventListener("click", function () {
+            let row = Math.floor(index / 3);
+            let col = index % 3; 
 
-        if(board[fila][columna] != undefined )
-        {
-            console.log('Esa posicion esta ocupada. Intente con una diferente.');
-            i--; 
-        }
-        else 
-        {
-            if(i % 2 == 0)
-            {
-                board[fila][columna] = "O"; 
+            if (board[row][col] !== undefined) {
+                alert('That position is taken. Please try a different one.');
+                return;
             }
-            else 
-            {
-                board[fila][columna] = "X";
+
+            if (turn % 2 === 0) {
+                board[row][col] = "O";
+                gameCell.textContent = "O";
+            } else {
+                board[row][col] = "X";
+                gameCell.textContent = "X";
             }
-        }
-        
-        console.log(board);
 
-        if(checkWinner(board))
-        {
-            break;
-        }
+            turn++;
 
-        if(i == 9 && !checkWinner(board))
-        {
-            console.log("It's a tie! 🤝🏽");
-        }
-    }
+            if (checkWinner(board)) {
+                gameCells.forEach(gameCell => 
+                {
+                    gameCell.setAttribute('style', 'pointer-events:none');
+                });
+                return;
+            }
+
+            // Verifica si es empate
+            if (turn > 9) {
+                gameCells.forEach(gameCell => 
+                    {
+                        gameCell.setAttribute('style', 'pointer-events:none');
+                    });
+
+                alert("It's a tie! 🤝🏽");
+            }
+        });
+    });
 }
 
 function checkWinner(board)
@@ -82,7 +90,7 @@ function checkWinner(board)
         board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X" ||
         board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X")
     {
-        console.log("Player X wins! 🏆");
+        alert("Player X wins! 🏆");
         return true;
     }
     //X wins (vertical):
@@ -90,14 +98,14 @@ function checkWinner(board)
             board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X" ||
             board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X")
     {
-        console.log("Player X wins! 🏆");
+        alert("Player X wins! 🏆");
         return true;
     }
     //X wins (diagonal):
     else if(board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X" || 
             board[0][2] == "X" && board[1][1] == "X" && board[2][0] == "X")
     {
-        console.log("Player X wins! 🏆");
+        alert("Player X wins! 🏆");
         return true;
     }
 
@@ -106,7 +114,7 @@ function checkWinner(board)
         board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O" ||
         board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")
     {
-        console.log("Player O wins! 🏆");
+        alert("Player O wins! 🏆");
         return true;
     }
     //O wins (vertical):
@@ -114,14 +122,14 @@ function checkWinner(board)
             board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O" ||
             board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O")
     {
-        console.log("Player O wins! 🏆");
+        alert("Player O wins! 🏆");
         return true;
     }
     //O wins (diagonal):
     else if(board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O" || 
             board[0][2] == "O" && board[1][1] == "O" && board[2][0] == "O")
     {
-        console.log("Player O wins! 🏆");
+        alert("Player O wins! 🏆");
         return true;
     }
 
