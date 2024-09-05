@@ -10,7 +10,7 @@ const lblPlayer1 = document.querySelector('#player1Name');
 const lblPlayer2 = document.querySelector('#player2Name');
 const lblPlayer1Score = document.querySelector('#player1Score');
 const lblPlayer2Score = document.querySelector('#player2Score');
-const btnResetGame = document.querySelector('#btnReset');
+const btnPlayAgain = document.querySelector('#btnPlayAgain');
 
 let user1, user2;
 
@@ -224,12 +224,7 @@ function createUsers (username)
         giveScore: function()
         {
             score++; 
-        }, 
-
-        resetScore: function()
-        {
-            score = 0;
-        }
+        } 
     }
 }
 
@@ -241,19 +236,11 @@ function startGame()
     gameBoard.StartGameFlow(gameBoard);
 }
 
-function resetGame()
+
+btnPlayAgain.addEventListener('click', function()
 {
-    user1.resetScore();
-    user2.resetScore();
-
-    lblPlayer1Score.textContent = '0';
-    lblPlayer2Score.textContent = user2.getScore();
-
-    gameCells.forEach(gameCell => {
-        gameCell.textContent = "";
-    });
-}
-
+    location.reload();
+});
 
 //[0][0]    [0][1]  [0][2]
 //[1][0]    [1][1]  [1][2]
