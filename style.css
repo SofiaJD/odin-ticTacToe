@@ -1,11 +1,16 @@
-/* Import font */
+/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body
 {
     background-image: url(IMG/Background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: 'Montserrat';
+
+    --green : rgb(1, 184, 13);
+    --red : rgb(227, 2, 2);
 }
 
 h1
@@ -13,6 +18,63 @@ h1
     font-family: 'Playwrite AR';
     text-align: center;
     color: black;
+}
+
+#InfoUsers 
+{
+    margin-top: 70px;
+    text-align: center;
+}
+
+#InfoUsers p
+{
+    font-size: 24px;
+}
+
+#InfoUsers #formUsers
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#InfoUsers #formUsers label
+{
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#InfoUsers #formUsers input
+{
+    margin-top: 10px;
+    width: 350px;
+    height: 33px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-size: 18px;
+}
+
+#InfoUsers #formUsers input:focus
+{
+    border: 2px solid var(--green);
+    outline: none;
+}
+
+#InfoUsers #btnStart
+{
+    margin-top: 40px;
+    background-color: var(--green);
+    padding: 12px 80px;
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#InfoUsers #btnStart:hover
+{
+    box-shadow: 5px 5px green;
 }
 
 #GameBoard
@@ -24,6 +86,7 @@ h1
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     font-family: 'Sriracha';
+    display: none;
 }
 
 #GameBoard .GameBoardCell
@@ -85,4 +148,78 @@ h1
 {
     border-bottom: none;
     border-right: none;
+}
+
+#modal
+{
+    background-color: transparent;
+    border: none;
+    text-align: center;
+}
+
+#modal::backdrop
+{
+    background-color: rgba(255, 255, 255, 0.866);
+}
+
+#modal #message
+{
+    font-family: 'Playwrite AR';
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#modal #score 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 36px;
+    margin-top: -30px;
+    font-weight: 300;
+}
+
+#modal #score div p:last-child
+{
+    margin-top: -20px;
+}
+
+#modal #actions
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+#modal #actions button
+{
+    width: 200px;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#modal #actions #btnReset
+{
+    background-color: var(--red);
+    color: white;
+}
+
+#modal #actions #btnReset:hover
+{
+    background-color: rgb(209, 1, 1);
+}
+
+#modal #actions #btnPlayAgain
+{
+    background-color: var(--green);
+    color: white;
+}
+
+#modal #actions #btnPlayAgain:hover
+{
+    background-color: rgb(0, 171, 0);
 }

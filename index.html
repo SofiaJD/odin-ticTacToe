@@ -7,8 +7,28 @@
     <title>Odin - Tic Tac Toe</title>
 </head>
 <body>
-    
+
     <h1>Tic Tac Toe</h1>
+
+    <div id="InfoUsers">
+        <p>To start playing enter the names of the players:</p>
+
+        <div id="UsersContainer">
+            <form action="" id="formUsers">
+                <label for="username1">
+                    Player 1 (X)
+                    <br>
+                    <input type="text" id="username1" required>
+                </label>
+                <label for="username2">
+                    Player 2 (O)
+                    <br>
+                    <input type="text" id="username2" required>
+                </label>
+            </form>
+            <button form="formUsers" id="btnStart">Start game</button>
+        </div>
+    </div>
 
     <div id="GameBoard">
         <div class="GameBoardCell one"></div>
@@ -22,9 +42,23 @@
         <div class="GameBoardCell nine"></div>
     </div>
 
-    <!-- <dialog>
-
-    </dialog> -->
+    <dialog id="modal">
+        <p id="message">Player 1 won! 🏆</p>
+        <div id="score">
+            <div>
+                <p id="player1Name">Player 1:</p>
+                <p id="player1Score">0</p>
+            </div>
+            <div>
+                <p id="player2Name">Player 2:</p>
+                <p id="player2Score">0</p>
+            </div>
+        </div>
+        <div id="actions">
+            <button id="btnReset">Reset</button>
+            <button id="btnPlayAgain">Play again</button>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>
